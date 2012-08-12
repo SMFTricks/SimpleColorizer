@@ -10,19 +10,14 @@ function ob_colorizer($buffer)
 	if (isset($_REQUEST['xml']))
 		return $buffer;
 
-	$regex = array(
-		'~href="' . preg_quote($scripturl) . '\?action=profile;u=(\d+)"~',
-		'~(href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}"[^>]*)~'
-	);
-
-	$user_ids = preg_match_all($regex[0], $buffer, $matches) ? array_unique($matches[1]) : array();
+	$user_ids = preg_match_all('~href="' . preg_quote($scripturl) . '\?action=profile;u=(\d+)"~', $buffer, $matches) ? array_unique($matches[1]) : array();
 
 	if (empty($user_ids))
 		return $buffer;
 
 	if (($user_colors = sc_loadColors($user_ids)) !== false)
 		foreach ($user_colors as $user_id => $user_color)
-			$buffer = preg_replace(str_replace('{$user_id}', $user_id, $regex[1]), '$1 style="color: ' . $user_color . ';"', $buffer);
+			$buffer = preg_replace(str_replace('{$user_id}', $user_id, '~(href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}"[^>]*)~'), '$1 style="color: ' . $user_color . ';"', $buffer);
 
 	return $buffer;
 }
@@ -43,7 +38,7 @@ function sc_loadColors($user_ids = array())
 			LEFT JOIN {db_prefix}membergroups AS mg ON (mg.id_group = mem.id_group)
 		WHERE mem.id_member IN ({array_int:user_ids})',
 		array(
-			'user_ids'	=> $user_ids,
+			'user_ids' => $user_ids,
 		)
 	);
 	$user_colors = array();
