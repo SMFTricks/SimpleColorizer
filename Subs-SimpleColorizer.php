@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @package SimpleColorizer
+ * @version 1.2
+ * @author Diego Andrés <diegoandres_cortes@outlook.com>
+ * @copyright Copyright (c) 2021, SMF Tricks
+ * @license MIT
+ */
+
 if (!defined('SMF'))
 	die('Hacking attempt...');
 
