@@ -26,8 +26,10 @@ function ob_colorizer($buffer)
 	}
 
 	if (($user_colors = sc_loadColors($user_ids)) !== false) {
-		foreach ($user_colors as $user_id => $user_color) {
-			$buffer = preg_replace(str_replace('{$user_id}', $user_id, '~(href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}"[^>]*)~'), '$1 style="color: ' . $user_color . ';"', $buffer);
+		foreach ($user_colors as $user_id => $user_color)
+		{
+			if (!empty($user_color))
+				$buffer = preg_replace(str_replace('{$user_id}', $user_id, '~(href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}"[^>]*)~'), '$1 style="color: ' . $user_color . ';"', $buffer);
 		}
 	}
 
