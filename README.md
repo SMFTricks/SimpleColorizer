@@ -15,4 +15,4 @@
 * You can install SimpleColorizer through the package manager of your forum administration.
 
 ## Changelog
-You can find the changelog for SimpleColorizer on SMF Tricks: [Changelog](https://smftricks.com/index.php?topic=2206.0)
+You can find the changelog for SimpleColorizer on SMF Tricks: [Changelog](https://smftricks.com/index.php?topic=2210.0)
