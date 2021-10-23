@@ -3,7 +3,7 @@
 <img src="https://img.shields.io/badge/SMF-2.0-996ee1?style=flat-square">
 
 * Developed by [Diego Andrés](https://github.com/DiegoAndresCortes)
-- Original developer: [Berat 'grafitus' Dogan](https://github.com/beratdogan)
+* Original developer: [Berat 'grafitus' Dogan](https://github.com/beratdogan)
 
 ## Introduction
 * SimpleColorizer allows you to add a slider (carousel) to your forum with the latest first image of each topic from the selected boards.
