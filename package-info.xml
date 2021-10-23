@@ -4,7 +4,7 @@
 	<id>grafitus:SimpleColorizer</id>
 	<name>SimpleColorizer</name>
 	<type>modification</type>
-	<version>1.2</version>
+	<version>1.3</version>
 	<install for="2.0 - 2.99.99">
 		<code>hooks.php</code>
 		<require-file name="Subs-SimpleColorizer.php" destination="$sourcedir" />

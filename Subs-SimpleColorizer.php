@@ -2,7 +2,7 @@
 
 /**
  * @package SimpleColorizer
- * @version 1.2
+ * @version 1.3
  * @author Diego Andrés <diegoandres_cortes@outlook.com>
  * @copyright Copyright (c) 2021, SMF Tricks
  * @license MIT
@@ -13,11 +13,10 @@ if (!defined('SMF'))
 
 function ob_colorizer($buffer)
 {
-	global $context, $scripturl, $sourcedir, $modSettings;
+	global $scripturl;
 
-	if (isset($_REQUEST['xml'])) {
+	if (isset($_REQUEST['xml']))
 		return $buffer;
-	}
 
 	$user_ids = preg_match_all('~<a.+?href="' . preg_quote($scripturl) . '\?action=profile;u=(\d+)"~', $buffer, $matches) ? array_unique($matches[1]) : array();
 
@@ -25,11 +24,19 @@ function ob_colorizer($buffer)
 		return $buffer;
 	}
 
-	if (($user_colors = sc_loadColors($user_ids)) !== false) {
+	if (($user_colors = sc_loadColors($user_ids)) !== false)
+	{
 		foreach ($user_colors as $user_id => $user_color)
 		{
-			if (!empty($user_color))
-				$buffer = preg_replace(str_replace('{$user_id}', $user_id, '~(href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}"[^>]*)~'), '$1 style="color: ' . $user_color . ';"', $buffer);
+			// No color, no fun
+			if (empty($user_color))
+				continue;
+
+			// Already has styles?
+			$buffer = preg_replace(str_replace('{$user_id}', $user_id, '~(<a.+?href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}".+?style=".+?[^">]*)~'), '$1 color: ' . $user_color . ';', $buffer);
+
+			// No styles?
+			$buffer = preg_replace(str_replace('{$user_id}', $user_id, '~(<a.+?href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}"(?!.+?(style=".+?"))[^>]*)~'), '$1 style="color: ' . $user_color . ';"', $buffer);
 		}
 	}
 
@@ -38,11 +45,10 @@ function ob_colorizer($buffer)
 
 function sc_loadColors($user_ids = array())
 {
-	global $smcFunc, $user_profile;
+	global $smcFunc;
 
-	if (empty($user_ids)) {
+	if (empty($user_ids))
 		return false;
-	}
 
 	$user_ids = is_array($user_ids) ? $user_ids : array($user_ids);
 
@@ -67,5 +73,3 @@ function sc_loadColors($user_ids = array())
 
 	return $user_colors;
 }
-
-?>
