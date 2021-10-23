@@ -6,7 +6,7 @@
 * Original developer: [Berat 'grafitus' Dogan](https://github.com/beratdogan)
 
 ## Introduction
-* SimpleColorizer allows you to add a slider (carousel) to your forum with the latest first image of each topic from the selected boards.
+* SimpleColorizer allows to color all member names with color of their respective membergroup on the forum.
 
 ## Requirements
 * SimpleColorizer can be installed on either SMF 2.0.x or SMF 2.1 with the same package.
