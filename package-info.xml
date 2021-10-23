@@ -12,6 +12,6 @@
 	</install>
 	<uninstall for="2.0 - 2.99.99">
 		<code>hooks.php</code>
-		<remove-file name="Subs-SimpleColorizer.php" destination="$sourcedir" />
+		<remove-file name="$sourcedir/Subs-SimpleColorizer.php"/>
 	</uninstall>
 </package-info>
