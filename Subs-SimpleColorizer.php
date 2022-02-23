@@ -2,30 +2,40 @@
 
 /**
  * @package SimpleColorizer
- * @version 1.3
+ * @version 1.3.1
  * @author Diego Andrés <diegoandres_cortes@outlook.com>
- * @copyright Copyright (c) 2021, SMF Tricks
+ * @copyright Copyright (c) 2022, SMF Tricks
  * @license MIT
  */
 
 if (!defined('SMF'))
 	die('Hacking attempt...');
 
+/**
+ * Using integrate_buffer it will insert the color of the group for each user if a profile link is found.
+ * 
+ * @param string $buffer The buffer content
+ * @return $buffer The modified buffer content
+ */
 function ob_colorizer($buffer)
 {
 	global $scripturl;
 
+	// on xml we don't need to do anything
 	if (isset($_REQUEST['xml']))
 		return $buffer;
 
+	// Get all of the profile links in the content and obtain their ID's.
 	$user_ids = preg_match_all('~<a.+?href="' . preg_quote($scripturl) . '\?action=profile;u=(\d+)"~', $buffer, $matches) ? array_unique($matches[1]) : array();
 
-	if (empty($user_ids)) {
+	// Do nothing if there are no ID's
+	if (empty($user_ids))
 		return $buffer;
-	}
 
+	// Get the users and their colors if there are any.
 	if (($user_colors = sc_loadColors($user_ids)) !== false)
 	{
+		// Loop through the users and insert their colors.
 		foreach ($user_colors as $user_id => $user_color)
 		{
 			// No color, no fun
@@ -40,16 +50,25 @@ function ob_colorizer($buffer)
 		}
 	}
 
+	// Return the colorized forum buffer.
 	return $buffer;
 }
 
+/**
+ * Loads the users with the found ID's and returns an array with the user ID's and the color.
+ * 
+ * @param array $user_ids The user ID's
+ * @return array|bool The user ID's and the color or false if there are no users
+ */
 function sc_loadColors($user_ids = array())
 {
 	global $smcFunc;
 
+	// No users? Sad.
 	if (empty($user_ids))
 		return false;
 
+	// Make sure it's an array or make it an array.
 	$user_ids = is_array($user_ids) ? $user_ids : array($user_ids);
 
 	$request = $smcFunc['db_query']('','
