@@ -1,18 +1,14 @@
-## SimpleColorizer
-<img src="https://img.shields.io/badge/License-MIT-a05a3f?style=flat-square"> <img src="https://img.shields.io/badge/SMF-2.1-3f73a0?style=flat-square">
-<img src="https://img.shields.io/badge/SMF-2.0-996ee1?style=flat-square">
+![SMF Tricks - Free & Premium Mods and Themes for SMF](https://smftricks.com/logos/logo.png)
+
+# Simple Colorizer
+![License](https://img.shields.io/badge/License-MPL%202.0-248049) ![Hooks Only](https://img.shields.io/badge/Hooks%20Only-Yes-6041a3) ![SMF 2.1](https://img.shields.io/badge/SMF-2.1-3f73a0)
 
 * Developed by [Diego Andrés](https://github.com/DiegoAndresCortes)
-* Original developer: [Berat 'grafitus' Dogan](https://github.com/beratdogan)
+* Original Developer: [Berat "grafitus" Dogan](https://github.com/beratdogan)
 
 ## Introduction
-* SimpleColorizer allows to color all member names with color of their respective membergroup on the forum.
+Simple Colorizer will color all member names with the color of their respective member group (or post group) on the forum.
 
-## Requirements
-* SimpleColorizer can be installed on either SMF 2.0.x or SMF 2.1 with the same package.
-
-## How to install
-* You can install SimpleColorizer through the package manager of your forum administration.
-
-## Changelog
-You can find the changelog for SimpleColorizer on SMF Tricks: [Changelog](https://smftricks.com/index.php?topic=2210.0)
+---
+### [Changelog](https://github.com/SMFTricks/SimpleColorizer/blob/master/CHANGELOG.md)
+### [GitHub](https://github.com/SMFTricks/SimpleColorizer)
