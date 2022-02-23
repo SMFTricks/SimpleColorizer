@@ -2,16 +2,26 @@
 <!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>grafitus:SimpleColorizer</id>
-	<name>SimpleColorizer</name>
+	<name>Simple Colorizer</name>
 	<type>modification</type>
-	<version>1.3</version>
-	<install for="2.0 - 2.1.99, 2.1 RC4">
-		<readme lang="english" parsebbc="true" type="file">readme.txt</readme>
-		<code>hooks.php</code>
+	<version>1.3.1</version>
+	<install for="2.1.0 - 2.1.99">
+		<!-- Mod Readme -->
+		<readme lang="english" parsebbc="true" type="file">readme/readme.english.txt</readme>
+		<!-- License -->
+		<license type="inline" parsebbc="false">
+			This Source Code Form is subject to the terms of the MIT license.
+		</license>
+		<!-- Hooks -->
+		<hook hook="integrate_buffer" function="ob_colorizer" file="$sourcedir/Subs-SimpleColorizer.php" />
+		<!-- Source File -->
 		<require-file name="Subs-SimpleColorizer.php" destination="$sourcedir" />
 	</install>
-	<uninstall for="2.0 - 2.1.99, 2.1 RC4">
-		<code>hooks.php</code>
+
+	<uninstall for="2.1.0- 2.1.99">
+		<!-- Hooks -->
+		<hook hook="integrate_buffer" function="ob_colorizer" file="$sourcedir/Subs-SimpleColorizer.php" reverse="true" />
+		<!-- Source File -->
 		<remove-file name="$sourcedir/Subs-SimpleColorizer.php"/>
 	</uninstall>
 </package-info>
