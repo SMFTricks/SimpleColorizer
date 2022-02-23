@@ -8,13 +8,13 @@
 - ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Fixed uninstall.
 - ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Fixed applying style to links that already have a style.
 - ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Fixed adding empty styles when the group had no color.
-
+---
 #### 1.2 - 12 April 2014
 - ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Only try to color actual profile links.
-
+---
 #### 1.1 - 30 June 2011
 - ![New Feature](https://smftricks.com/assets/changelog/tag--plus.png) Added support for post groups.
-
+---
 #### 1.0 - 26 June 2011
 - ![New Feature](https://smftricks.com/assets/changelog/tag--plus.png) Initial Release.
 
