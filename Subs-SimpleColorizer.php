@@ -103,3 +103,17 @@ function sc_loadColors($user_ids = array())
 
 	return $user_colors;
 }
+
+/**
+ * Add some extra css to prevent inconveniences.
+ * 
+ * @return void
+ */
+function sc_css()
+{
+	addInlineCss('
+		a > strong {
+			color: inherit;
+		}
+	');
+}

@@ -14,6 +14,7 @@
 		</license>
 		<!-- Hooks -->
 		<hook hook="integrate_buffer" function="ob_colorizer" file="$sourcedir/Subs-SimpleColorizer.php" />
+		<hook hook="integrate_pre_css_output" function="sc_css" file="$sourcedir/Subs-SimpleColorizer.php" />
 		<!-- Source File -->
 		<require-file name="Subs-SimpleColorizer.php" destination="$sourcedir" />
 	</install>
@@ -21,6 +22,7 @@
 	<uninstall for="2.1.0- 2.1.99">
 		<!-- Hooks -->
 		<hook hook="integrate_buffer" function="ob_colorizer" file="$sourcedir/Subs-SimpleColorizer.php" reverse="true" />
+		<hook hook="integrate_pre_css_output" function="sc_css" file="$sourcedir/Subs-SimpleColorizer.php" reverse="true" />
 		<!-- Source File -->
 		<remove-file name="$sourcedir/Subs-SimpleColorizer.php"/>
 	</uninstall>

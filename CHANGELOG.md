@@ -2,6 +2,7 @@
 
 #### 1.4 - 01 January 2023
 - ![Improvement](https://smftricks.com/assets/changelog/tag--pencil.png) Improve the logic for adding the styles.
+- ![New Feature](https://smftricks.com/assets/changelog/tag--plus.png) Prevent specificity from overtaking the color of the link.
 ---
 #### 1.3.1 - 22 February 2022
 - ![Improvement](https://smftricks.com/assets/changelog/tag--pencil.png) Cleaned some bits of code.
