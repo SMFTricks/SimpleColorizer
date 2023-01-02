@@ -2,7 +2,7 @@
 
 /**
  * @package SimpleColorizer
- * @version 1.3.1
+ * @version 1.4
  * @author Diego Andrés <diegoandres_cortes@outlook.com>
  * @copyright Copyright (c) 2022, SMF Tricks
  * @license MIT
@@ -42,11 +42,22 @@ function ob_colorizer($buffer)
 			if (empty($user_color))
 				continue;
 
-			// Already has styles?
-			$buffer = preg_replace(str_replace('{$user_id}', $user_id, '~(<a.+?href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}".+?style=".+?[^">]*)~'), '$1 color: ' . $user_color . ';', $buffer);
+			// Replace the links that match the profile URL pattern
+			$buffer = preg_replace_callback(str_replace('{$user_id}', $user_id, '~<a[^>]*href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}"[^>]*>~'),
+				function ($matches) use ($user_color)
+				{
+					$result = $matches[0];
 
-			// No styles?
-			$buffer = preg_replace(str_replace('{$user_id}', $user_id, '~(<a.+?href="' . preg_quote($scripturl) . '\?action=profile\;u={$user_id}"(?!.+?(style=".+?"))[^>]*)~'), '$1 style="color: ' . $user_color . ';"', $buffer);
+					// No styles
+					if (strpos($result, 'style="') === false)
+						$result = str_replace('>', ' style="color: ' . $user_color . ';">', $result);
+					// Add the color
+					else
+						$result = preg_replace('/style=(["\'])([^"\']*)\1/','style=$1$2;color:'. $user_color . ';$1', $result);
+
+					return $result;
+				},
+			$buffer);
 		}
 	}
 
